@@ -1,6 +1,6 @@
 {
 	"name": "svelte5-chessground",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A Svelte 5 wrapper component for chessground chess board library",
 	"type": "module",
 	"main": "./dist/index.js",
