@@ -18,7 +18,8 @@ jobs:
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
+      - run: rm -rf node_modules package-lock.json
+      - run: npm install
       - run: npm test --if-present
       - name: Verify tag == package.json version
         run: |
