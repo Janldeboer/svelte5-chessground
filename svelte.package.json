@@ -1,0 +1,15 @@
+{
+	"lib": {
+		"emitTypes": true,
+		"files": ["src/lib"]
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./style.css": "./dist/style.css"
+	},
+	"files": ["dist"]
+}
