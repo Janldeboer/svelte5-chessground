@@ -1,6 +1,6 @@
 {
 	"name": "svelte5-chessground",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A Svelte 5 wrapper component for chessground chess board library",
 	"type": "module",
 	"main": "./dist/index.js",
@@ -58,8 +58,8 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/yourusername/svelte5-chessground"
+		"url": "https://github.com/Janldeboer/svelte5-chessground"
 	},
-	"author": "",
+	"author": "Jan de Boer <contact@jandeboer.de>",
 	"license": "GPL-3.0-or-later"
 }
