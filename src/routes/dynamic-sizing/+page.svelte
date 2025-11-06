@@ -73,17 +73,20 @@
 			</div>
 
 			<div class="description">
-				<h3>Current Behavior</h3>
+				<h3>Improved Behavior ✅</h3>
 				<p>
-					The chessboard component has <code>width: 100%; height: 100%; aspect-ratio: 1;</code> set on the wrapper.
-					When the parent container doesn't have explicit dimensions and shares space with other elements, this can lead to sizing issues.
+					The chessboard component now has improved sizing behavior that ensures it's always square and responsive:
 				</p>
 				<ul>
-					<li><strong>Issue 1:</strong> The board may collapse to zero height or expand unpredictably</li>
-					<li><strong>Issue 2:</strong> The aspect ratio may not be respected in flex layouts with competing elements</li>
-					<li><strong>Issue 3:</strong> The board and info panel compete for space without clear sizing rules</li>
-					<li><strong>Issue 4:</strong> Responsive behavior can be inconsistent across different viewports</li>
+					<li><strong>✓ Always square:</strong> The board maintains a 1:1 aspect ratio in all layouts</li>
+					<li><strong>✓ Minimum size:</strong> The board has a minimum size of 200×200px to remain usable</li>
+					<li><strong>✓ Smart sizing:</strong> The board expands to fill available space without breaking layout</li>
+					<li><strong>✓ Flex-friendly:</strong> Works correctly in flex layouts alongside other elements</li>
+					<li><strong>✓ Responsive:</strong> Adapts gracefully to different viewport sizes</li>
 				</ul>
+				<p>
+					Try resizing your browser window to see how the board adapts while maintaining its square shape and competing fairly with the info panel.
+				</p>
 			</div>
 		</main>
 	</div>

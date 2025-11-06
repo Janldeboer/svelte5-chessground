@@ -608,8 +608,31 @@
 
 <style>
 	.cg-wrap {
+		/* Set minimum size for the board */
+		min-width: 200px;
+		min-height: 200px;
+		
+		/* Default to width-based sizing with max constraints */
 		width: 100%;
-		height: 100%;
-		aspect-ratio: 1;
+		max-width: 100%;
+		
+		/* Use the smaller of available width or height to maintain square */
+		height: auto;
+		max-height: 100%;
+		
+		/* Ensure the board is always square */
+		aspect-ratio: 1 / 1;
+		
+		/* Prevent the board from growing beyond its container */
+		contain: layout size;
+		
+		/* Center the board if it's smaller than container */
+		margin: 0 auto;
+	}
+	
+	/* In flex containers, constrain size based on available space */
+	:global(*) > .cg-wrap {
+		flex-shrink: 1;
+		flex-grow: 0;
 	}
 </style>
