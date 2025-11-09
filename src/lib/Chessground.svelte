@@ -5,113 +5,16 @@
 	import { buildConfig, buildUpdateConfig } from './config-builder';
 
 	let {
-		// Core props
 		fen = $bindable(),
-		orientation = 'white',
-		turnColor,
-		check,
-		lastMove,
-		selected,
-		coordinates,
-		coordinatesOnSquares,
-		autoCastle,
-		viewOnly,
-		disableContextMenu,
-		addPieceZIndex,
-		addDimensionsCssVarsTo,
-		blockTouchScroll,
-		touchIgnoreRadius,
-		trustAllEvents,
-		
-		// Highlight props
-		highlightLastMove,
-		highlightCheck,
-		highlightCustom,
-		
-		// Animation props
-		animationEnabled,
-		animationDuration,
-		
-		// Movable props
-		movableFree,
-		movableColor,
-		movableDests,
-		movableShowDests,
-		movableRookCastle,
-		
-		// Premovable props
-		premovableEnabled,
-		premovableShowDests,
-		premovableCastle,
-		premovableDests,
-		premovableCustomDests,
-		premovableUnrestrictedPremoves,
-		premovableAdditionalPremoveRequirements,
-		
-		// Predroppable props
-		predroppableEnabled,
-		
-		// Draggable props
-		draggableEnabled,
-		draggableDistance,
-		draggableAutoDistance,
-		draggableShowGhost,
-		draggableDeleteOnDropOff,
-		
-		// Selectable props
-		selectableEnabled,
-		
-		// Drawable props
-		drawableEnabled,
-		drawableVisible,
-		drawableDefaultSnapToValidMove,
-		drawableEraseOnMovablePieceClick,
-		drawableShapes,
-		drawableAutoShapes,
-		drawableBrushes,
-		
-		// Event callbacks
-		onChange,
-		onMove,
-		onDropNewPiece,
-		onSelect,
-		onInsert,
-		onMoveAfter,
-		onAfterNewPiece,
-		onPremoveSet,
-		onPremoveUnset,
-		onPredropSet,
-		onPredropUnset,
-		onDrawableChange,
-		
-		// API binding
 		api = $bindable(),
-		
-		...restProps
+		...props
 	}: ChessgroundProps = $props();
 
 	let boardElement: HTMLDivElement;
 
 	onMount(async () => {
 		// Build the configuration from props
-		const finalConfig = buildConfig({
-			fen, orientation, turnColor, check, lastMove, selected,
-			coordinates, coordinatesOnSquares, autoCastle, viewOnly, disableContextMenu,
-			addPieceZIndex, addDimensionsCssVarsTo, blockTouchScroll, touchIgnoreRadius, trustAllEvents,
-			highlightLastMove, highlightCheck, highlightCustom,
-			animationEnabled, animationDuration,
-			movableFree, movableColor, movableDests, movableShowDests, movableRookCastle,
-			premovableEnabled, premovableShowDests, premovableCastle, premovableDests, premovableCustomDests,
-			premovableUnrestrictedPremoves, premovableAdditionalPremoveRequirements,
-			predroppableEnabled,
-			draggableEnabled, draggableDistance, draggableAutoDistance, draggableShowGhost, draggableDeleteOnDropOff,
-			selectableEnabled,
-			drawableEnabled, drawableVisible, drawableDefaultSnapToValidMove, drawableEraseOnMovablePieceClick,
-			drawableShapes, drawableAutoShapes, drawableBrushes,
-			onChange, onMove, onDropNewPiece, onSelect, onInsert,
-			onMoveAfter, onAfterNewPiece, onPremoveSet, onPremoveUnset,
-			onPredropSet, onPredropUnset, onDrawableChange,
-		});
+		const finalConfig = buildConfig({ fen, ...props });
 
 		// Initialize the board
 		api = ChessgroundApi(boardElement, finalConfig);
@@ -126,10 +29,7 @@
 	// Update board when props change
 	$effect(() => {
 		if (api) {
-			const updates = buildUpdateConfig({
-				fen, orientation, turnColor, check, lastMove, selected,
-				movableDests, movableColor, drawableShapes, drawableAutoShapes
-			});
+			const updates = buildUpdateConfig({ fen, ...props });
 			
 			if (Object.keys(updates).length > 0) {
 				api.set(updates);
@@ -138,7 +38,7 @@
 	});
 </script>
 
-<div bind:this={boardElement} class="cg-wrap" {...restProps}></div>
+<div bind:this={boardElement} class="cg-wrap"></div>
 
 <style>
 	.cg-wrap {
